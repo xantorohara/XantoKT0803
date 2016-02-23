@@ -1,25 +1,10 @@
 #include "XantoKT0803.h"
 
-XantoKT0803::XantoKT0803(uint8_t clock_pin, uint8_t data_pin, uint8_t chip_type):
-  chip_type(chip_type), i2c(clock_pin, data_pin, 400) {
-}
-
-void XantoKT0803::readAll() {
-  for (uint8_t i = 0; i < KT0803_REG_COUNT; i++) {
-    data[i] = readRaw(KT0803_REGA[i]);
-  }
+XantoKT0803::XantoKT0803(uint8_t clock_pin, uint8_t data_pin):
+  i2c(clock_pin, data_pin, 1) {
 }
 
 uint8_t XantoKT0803::read(uint8_t register_address) {
-  for (uint8_t i = 0; i < KT0803_REG_COUNT; i++) {
-    if (register_address == KT0803_REGA[i]) {
-      data[i] = readRaw(KT0803_REGA[i]);
-      return data[i];
-    }
-  }
-}
-
-uint8_t XantoKT0803::readRaw(uint8_t register_address) {
   i2c.start();
 
   i2c.writeByte(KT0803_CMD_WRITE);
@@ -54,15 +39,6 @@ uint8_t XantoKT0803::readRaw(uint8_t register_address) {
 }
 
 uint8_t XantoKT0803::write(uint8_t register_address, uint8_t value) {
-  for (uint8_t i = 0; i < KT0803_REG_COUNT; i++) {
-    if (register_address == KT0803_REGA[i]) {
-      data[i] = writeRaw(KT0803_REGA[i], value);
-      return data[i];
-    }
-  }
-}
-
-uint8_t XantoKT0803::writeRaw(uint8_t register_address, uint8_t value) {
   i2c.start();
 
   i2c.writeByte(KT0803_CMD_WRITE);
@@ -88,28 +64,15 @@ uint8_t XantoKT0803::writeRaw(uint8_t register_address, uint8_t value) {
   return value;
 }
 
-void  XantoKT0803::setFrequency(float frequency) {
-  uint16_t freq = frequency * 20;
-  uint8_t temp;
-  switch (chip_type) {
-    case KT0803K_CHIP:
-      //todo
-      break;
+/**
+ * See KT0803 datasheets for "Register 0x02"
+ */
+void XantoKT0803::mute(uint8_t mute_enable) {
+  uint8_t r02 = read(KT0803_REGA_02);
 
-    case KT0803L_CHIP:
-      //in order to set a new frequency we need to write to 3 registers
+  bitWrite(r02, 3, mute_enable == 1);
 
-//      temp = read(KT0803_REGA_02);
-//      bitWrite(KT0803_REGA_02, 7, 1)
-//      write(KT0803_REGA_02, temp);
-
-
-      //      bitWrite(KT0803_REGA_00, 7, 1)
-      //      bitWrite(KT0803_REGA_02, 7, 1)
-      //      write(KT0803_REGA_01, );
-
-      break;
-  }
+  write(KT0803_REGA_02, r02);
 }
 
 

@@ -3,12 +3,21 @@ Arduino library for KT0803-based FM radio transmitter
 
 ## Elechouse V2.0 FM radio transmitter module
 
-The only module I have:
+The only one module I've bought in AliExpress:
 
 <a href="http://s.click.aliexpress.com/e/MNVjMVbaQ" target="_blank">
 ![Elechouse V2.0 FM radio transmitter module](https://github.com/xantorohara/XantoKT0803/raw/master/extras/elechouse_v2_fm_transmitter.jpg?raw=true)
 </a>
 
+But unfortunately my module is a bit defective.
+It works as I2C device; all registers are available for reading and writing.
+Also I can hear the transmitted sound, but this module generates such a terrible noise...
+
+:construction:
+Currently this library has low-level operations with registers and 
+just two high-level functions (setFrequency and mute).
+Maybe I'll resume work on this library when I have time and proper KT0803-based device. 
+:construction:
 
 ## Quick start
 1. Download XantoI2C library: [XantoI2C-master.zip](https://github.com/xantorohara/XantoI2C/archive/master.zip)
@@ -16,21 +25,6 @@ The only module I have:
 3. Install these libraries (for example, via Arduino IDE: Sketch -> Include Library -> Add .ZIP Library...)
 4. Use it 
 
-This sample demonstrates basic usage of the library:
-
-```cpp
-//todo
-```
-
-## About XantoKT0803
-
-//todo
- 
-## Class API
-
-```cpp
-//todo
-```
 
 ## Examples
 * [XantoKT0803_Demo](https://github.com/xantorohara/XantoKT0803/tree/master/examples/XantoKT0803_Demo) -

@@ -1,17 +1,17 @@
 /**
  * This example demonstrates abilities of the XantoKT0803 library.
- * todo
+ *
  */
 #include <XantoI2C.h>
 
-#include "XantoKT0803.h"
+#include "XantoKT0803L.h"
 
 const uint8_t PIN_SCL = 8;
 const uint8_t PIN_SDA = 9;
 
-XantoKT0803 fm(PIN_SCL, PIN_SDA);
+XantoKT0803L fm(PIN_SCL, PIN_SDA);
 
-char snprintf_buffer[19] = "0x00 12345678 0x00";
+char snprintf_buffer[19] = "0x00 76543210 0x00";
 
 void setup() {
   Serial.begin(9600);
@@ -20,13 +20,15 @@ void setup() {
 
 void printUsage() {
   Serial.println("Usage:");
-  Serial.println(" -Write register:  W register_address_hex value_hex");
-  Serial.println(" -Read register:   R register_address_hex");
-  Serial.println(" -Set Frequency:   F frequency_float");
-  Serial.println(" -Print registers: P");
+  Serial.println(" -Write register: W register_address_hex value_hex");
+  Serial.println(" -Read register: R register_address_hex");
+  Serial.println(" -Set Frequency: F frequency*10");
+  Serial.println(" -Print all registers: P");
+  Serial.println(" -Mute: M");
+  Serial.println(" -Unmute: U");
   Serial.println("E.g.: \"W 0x02 0x40\" - write value=0x40 to the register with address=0x02");
-  Serial.println("E.g.: \"R 0x02\" - read the register with address=0x02");  
-  Serial.println("E.g.: \"F 99.7\" - set radio frequency=99.7");  
+  Serial.println("E.g.: \"R 0x02\" - read the register with address=0x02");
+  Serial.println("E.g.: \"F 997\" - set radio frequency=99.7MHz");
 }
 
 void printErrorIfExists() {
@@ -56,7 +58,7 @@ void printRegister(uint8_t register_address, uint8_t value) {
 void readAndPrintRegister(uint8_t register_address) {
   Serial.print("Read: ");
   Serial.println(register_address, HEX);
-  
+
   uint8_t value = fm.read(register_address);
   printErrorIfExists();
 
@@ -65,13 +67,13 @@ void readAndPrintRegister(uint8_t register_address) {
 }
 
 void readAndPrintAllRegisters() {
-  Serial.println("Read all");
-  fm.readAll();
-  printErrorIfExists();
+  Serial.println("Read all: ");
 
   Serial.println("Register address, BIN value, HEX value:");
-  for (uint8_t i = 0; i < KT0803_REG_COUNT; i++) {
-    printRegister(KT0803_REGA[i], fm.data[i]);
+  for (uint8_t i = 0; i < fm.getRegistersCount(); i++) {
+    uint8_t value = fm.read(fm.getRegisters()[i]);
+    printErrorIfExists();
+    printRegister(fm.getRegisters()[i], value);
   }
   Serial.println("Done");
 }
@@ -79,9 +81,9 @@ void readAndPrintAllRegisters() {
 void writeAndPrintRegister(uint8_t register_address, uint8_t value) {
   Serial.print("Write: ");
   Serial.print(register_address, HEX);
-  Serial.print(" ");  
+  Serial.print(" ");
   Serial.println(value, HEX);
-  
+
   value = fm.write(register_address, value);
   printErrorIfExists();
 
@@ -93,6 +95,13 @@ void writeAndPrintRegister(uint8_t register_address, uint8_t value) {
 
   Serial.println("Register address, BIN value, HEX value:");
   printRegister(register_address, value);
+}
+
+void setFrequency(uint16_t frequency) {
+  Serial.print("Set frequency: ");
+  Serial.print(frequency / 10.0);
+  Serial.println("MHz");
+  fm.setFrequency(frequency);
 }
 
 void loop() {
@@ -116,14 +125,29 @@ void loop() {
       readAndPrintRegister(register_address);
 
     } else if (cmd == 'F') {
-      //todo
+    
+      setFrequency(Serial.parseInt());
+    
     } else if (cmd == 'P') {
+      
       readAndPrintAllRegisters();
+      
+    } else if (cmd == 'M') {
+      
+      Serial.println("Mute");
+      fm.mute(1);
+      printErrorIfExists();
+      
+    } else if (cmd == 'U') {
+      
+      Serial.println("Unmute");
+      fm.mute(0);
+      printErrorIfExists();
+      
     } else {
       Serial.println("Unknown command");
       printUsage();
     }
   }
 }
-
 
