@@ -1,9 +1,14 @@
 # XantoKT0803
 Arduino library for KT0803-based FM radio transmitter
 
-## Elechouse FM module
+## Elechouse V2.0 FM radio transmitter module
 
-//todo
+The only module I have:
+
+<a href="http://s.click.aliexpress.com/e/MNVjMVbaQ" target="_blank">
+![Elechouse V2.0 FM radio transmitter module](https://github.com/xantorohara/XantoKT0803/raw/master/extras/elechouse_v2_fm_transmitter.jpg?raw=true)
+</a>
+
 
 ## Quick start
 1. Download XantoI2C library: [XantoI2C-master.zip](https://github.com/xantorohara/XantoI2C/archive/master.zip)
@@ -17,7 +22,6 @@ This sample demonstrates basic usage of the library:
 //todo
 ```
 
-
 ## About XantoKT0803
 
 //todo
@@ -29,14 +33,15 @@ This sample demonstrates basic usage of the library:
 ```
 
 ## Examples
-* [XantoKT0803_KT0803L_Demo](https://github.com/xantorohara/XantoKT0803/tree/master/examples/XantoKT0803_KT0803L_Demo) -
-work with KT0803L chip 
+* [XantoKT0803_Demo](https://github.com/xantorohara/XantoKT0803/tree/master/examples/XantoKT0803_Demo) -
+set of Serial commands to interact with with a KT0803 chip 
 
 ## Related projects
 * [XantoI2C](https://github.com/xantorohara/XantoI2C) - 
 XantoKT0803 uses XantoI2C library for I2C communications with a KT0803 chip.
 
 ## References
+* :blue_book: [KT0803K datasheet](http://xantorohara.github.io/datasheets/KT0803K.pdf)
 * :blue_book: [KT0803L datasheet](http://xantorohara.github.io/datasheets/KT0803L.pdf)
 
 ## Author
