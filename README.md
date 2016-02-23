@@ -10,13 +10,17 @@ The only one module I've bought in AliExpress:
 </a>
 
 But unfortunately my module is a bit defective.
+
 It works as I2C device; all registers are available for reading and writing.
+
 Also I can hear the transmitted sound, but this module generates such a terrible noise...
 
 :construction:
-Currently this library has low-level operations with registers and 
-just two high-level functions (setFrequency and mute).
-Maybe I'll resume work on this library when I have time and proper KT0803-based device. 
+
+Currently this library has low-level operations with registers and just two high-level functions (setFrequency and mute).
+
+Maybe I'll resume work on it when I have time and proper KT0803-based devices. 
+
 :construction:
 
 ## Quick start
