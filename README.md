@@ -5,7 +5,11 @@ Arduino library for KT0803-based FM radio transmitter
 
 The only one module I've bought in AliExpress is Elechouse V2.0 FM radio transmitter module:
 
-[![Elechouse V2.0 FM radio transmitter module](extras/elechouse_v2_fm_transmitter.jpg)](http://s.click.aliexpress.com/e/MNVjMVbaQ)
+<a href="http://s.click.aliexpress.com/e/MNVjMVbaQ" target="_blank">
+
+![Elechouse V2.0 FM radio transmitter module](https://github.com/xantorohara/XantoKT0803/raw/master/extras/elechouse_v2_fm_transmitter.jpg?raw=true)
+
+</a>
 
 But unfortunately my module is a bit defective.
 
