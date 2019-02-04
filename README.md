@@ -34,8 +34,11 @@ Maybe I'll resume work on it when I have time and proper KT0803-based devices.
 set of Serial commands to interact with with a KT0803 chip 
 
 ## Related projects
-* [XantoI2C](https://github.com/xantorohara/XantoI2C) - 
+* [XantoI2C](https://xantorohara.github.io/XantoI2C/) - 
 XantoKT0803 uses XantoI2C library for I2C communications with a KT0803 chip.
+
+* [LED matrix 8x8 online editor](https://xantorohara.github.io/led-matrix-editor/) -
+online tool for editing and creating animations for LED matrices.
 
 ## Author
 Xantorohara <xantorohara@gmail.com>
