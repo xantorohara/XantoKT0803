@@ -5,11 +5,8 @@ Arduino library for KT0803-based FM radio transmitter
 
 The only one module I've bought in AliExpress is Elechouse V2.0 FM radio transmitter module:
 
-<a href="http://s.click.aliexpress.com/e/MNVjMVbaQ" target="_blank">
+[![Elechouse V2.0 FM radio transmitter module](https://github.com/xantorohara/XantoKT0803/raw/master/extras/elechouse_v2_fm_transmitter.jpg?raw=true)](http://s.click.aliexpress.com/e/MNVjMVbaQ)
 
-![Elechouse V2.0 FM radio transmitter module](https://github.com/xantorohara/XantoKT0803/raw/master/extras/elechouse_v2_fm_transmitter.jpg?raw=true)
-
-</a>
 
 But unfortunately my module is a bit defective.
 
@@ -39,10 +36,6 @@ set of Serial commands to interact with with a KT0803 chip
 ## Related projects
 * [XantoI2C](https://github.com/xantorohara/XantoI2C) - 
 XantoKT0803 uses XantoI2C library for I2C communications with a KT0803 chip.
-
-## References
-* :blue_book: [KT0803K datasheet](http://xantorohara.github.io/datasheets#KT0803K)
-* :blue_book: [KT0803L datasheet](http://xantorohara.github.io/datasheets#KT0803L)
 
 ## Author
 Xantorohara <xantorohara@gmail.com>
