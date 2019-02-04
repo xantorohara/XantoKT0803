@@ -20,8 +20,6 @@ Currently this library has low-level operations with registers and just two high
 
 Maybe I'll resume work on it when I have time and proper KT0803-based devices. 
 
-:construction:
-
 ## Quick start
 1. Download XantoI2C library: [XantoI2C-master.zip](https://github.com/xantorohara/XantoI2C/archive/master.zip)
 2. Download XantoKT0803 library: [XantoKT0803-master.zip](https://github.com/xantorohara/XantoKT0803/archive/master.zip)
